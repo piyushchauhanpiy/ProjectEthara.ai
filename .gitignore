@@ -3,6 +3,7 @@ backend/target/
 *.class
 *.jar
 !backend/pom.xml
+!backend/.mvn/wrapper/maven-wrapper.jar
 
 # Frontend
 frontend/node_modules/
