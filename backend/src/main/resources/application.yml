@@ -1,0 +1,41 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+
+spring:
+  application:
+    name: stock-backend
+  cache:
+    type: caffeine
+
+app:
+  cors:
+    allowed-origins: "http://localhost:3000,http://localhost:5173"
+  yahoo-finance:
+    base-url: https://query1.finance.yahoo.com
+    connect-timeout-ms: 5000
+    read-timeout-ms: 10000
+    max-retries: 3
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when_authorized
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    root: INFO
+    com.stockmarket: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

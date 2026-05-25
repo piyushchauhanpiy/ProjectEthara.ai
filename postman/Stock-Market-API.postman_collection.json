@@ -1,0 +1,85 @@
+{
+  "info": {
+    "name": "Stock Market API",
+    "description": "Live and historical stock data endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" }
+  ],
+  "item": [
+    {
+      "name": "Live Stock - AAPL",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/stocks/live/AAPL"
+      }
+    },
+    {
+      "name": "Live Stock - Gold (GC=F)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/stocks/live/GC%3DF"
+      }
+    },
+    {
+      "name": "Historical - AAPL 2024-05-10",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/stocks/history?ticker=AAPL&date=2024-05-10",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "stocks", "history"],
+          "query": [
+            { "key": "ticker", "value": "AAPL" },
+            { "key": "date", "value": "2024-05-10" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Historical - Market Closed (Saturday)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/stocks/history?ticker=AAPL&date=2024-05-11",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "stocks", "history"],
+          "query": [
+            { "key": "ticker", "value": "AAPL" },
+            { "key": "date", "value": "2024-05-11" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Invalid Ticker",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/stocks/live/@@@"
+      }
+    },
+    {
+      "name": "Future Date (400)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/stocks/history?ticker=AAPL&date=2099-01-01",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "stocks", "history"],
+          "query": [
+            { "key": "ticker", "value": "AAPL" },
+            { "key": "date", "value": "2099-01-01" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/actuator/health"
+      }
+    }
+  ]
+}
