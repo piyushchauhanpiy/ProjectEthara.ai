@@ -257,7 +257,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethara.ai - Stock Market Dashboard</title>
+    <title>StocksChecker - Stock Market Dashboard</title>
     <!-- Google Fonts & Tailwind CDN -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -884,7 +884,7 @@ def main():
         sys.exit(1)
         
     print(f"\n========================================================")
-    print(f" Ethara.ai Stock Tracker - Single File Python Replica")
+    print(f" StocksChecker Stock Tracker - Single File Python Replica")
     print(f"========================================================")
     print(f"-> Local dashboard: http://localhost:{port}/")
     print(f"-> API Endpoints:")
