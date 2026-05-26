@@ -41,6 +41,7 @@ stock-market-app/
 │       ├── pages/           # Home, Live, Historical, 404
 │       └── services/        # Axios API layer
 ├── docker-compose.yml
+├── golden_response.py       # Standalone Python replica (Stockstracker)
 ├── postman/                 # API collection
 └── README.md
 ```
@@ -119,6 +120,19 @@ docker compose up --build
 ```
 - Frontend: http://localhost  
 - Backend: http://localhost:8080
+
+### Standalone Python Replica (Stockstracker)
+
+Alternatively, you can run the entire application (both the backend API and the interactive dashboard) using a zero-dependency Python script:
+
+1. **Start the server**:
+   ```bash
+   python golden_response.py
+   ```
+2. **Access the application**:
+   - Interactive Dashboard: [http://localhost:8080](http://localhost:8080) (or `http://localhost:8081` if port 8080 is occupied)
+   - Live Stock API: `http://localhost:8080/api/stocks/live/AAPL`
+   - Historical API: `http://localhost:8080/api/stocks/history?ticker=AAPL&date=2024-05-10`
 
 ## Environment Variables
 
