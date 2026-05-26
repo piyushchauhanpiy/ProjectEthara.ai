@@ -11,7 +11,8 @@ spring:
 
 app:
   cors:
-    allowed-origins: "http://localhost:3000,http://localhost:5173"
+    allowed-origins: "http://localhost:3000,http://localhost:5173,http://localhost:5174"
+  use-mock-data: true
   yahoo-finance:
     base-url: https://query1.finance.yahoo.com
     connect-timeout-ms: 5000

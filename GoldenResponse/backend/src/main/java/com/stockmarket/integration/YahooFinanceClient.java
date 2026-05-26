@@ -18,17 +18,29 @@ import java.time.Duration;
 public class YahooFinanceClient {
 
     private final WebClient yahooFinanceWebClient;
+    private final MockStockDataClient mockStockDataClient;
 
     @Value("${app.yahoo-finance.max-retries:3}")
     private int maxRetries;
 
+    @Value("${app.use-mock-data:true}")
+    private boolean useMockData;
+
     public Mono<String> fetchLiveQuote(String ticker) {
+        if (useMockData) {
+            return mockStockDataClient.fetchLiveQuote(ticker);
+        }
+        
         String uri = "/v7/finance/quote?symbols=" + ticker;
         log.info("Fetching live quote for {}", ticker);
         return executeGet(uri);
     }
 
     public Mono<String> fetchChartHistory(String ticker, long period1, long period2) {
+        if (useMockData) {
+            return mockStockDataClient.fetchChartHistory(ticker, period1, period2);
+        }
+        
         String uri = String.format(
                 "/v8/finance/chart/%s?period1=%d&period2=%d&interval=1d&includePrePost=false",
                 ticker, period1, period2);

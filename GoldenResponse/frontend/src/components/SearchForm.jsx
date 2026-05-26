@@ -40,7 +40,7 @@ export default function SearchForm({
       }
     }
 
-    onSearch({ ticker: trimmed, date });
+    onSearch({ ticker: trimmed, date: includeDate ? date : undefined });
   };
 
   return (

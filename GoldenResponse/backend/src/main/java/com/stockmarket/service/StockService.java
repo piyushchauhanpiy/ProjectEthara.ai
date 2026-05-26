@@ -42,7 +42,9 @@ public class StockService {
         long period1 = DateUtil.toEpochStart(targetDate);
         long period2 = DateUtil.toEpochEnd(targetDate);
 
+        log.info("Fetching historical data for {} on {} (period1: {}, period2: {})", symbol, dateStr, period1, period2);
         String rawJson = yahooFinanceClient.fetchChartHistory(symbol, period1, period2).block();
+        log.info("Received raw JSON: {}", rawJson);
         return parseHistoryResponse(symbol, dateStr, targetDate, rawJson);
     }
 
