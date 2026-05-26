@@ -257,7 +257,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StocksChecker - Stock Market Dashboard</title>
+    <title>Stockstracker - Stock Market Dashboard</title>
     <!-- Google Fonts & Tailwind CDN -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -301,7 +301,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
                 </div>
                 <div>
                     <h1 class="text-2xl font-black tracking-tight bg-gradient-to-r from-white to-slate-400 light:from-slate-950 light:to-slate-600 bg-clip-text text-transparent">
-                        Ethara<span class="text-emerald-500 font-extrabold">.ai</span>
+                        Stocks<span class="text-emerald-500 font-extrabold">tracker</span>
                     </h1>
                     <p class="text-xs text-slate-400">Stock Market Checker Replica</p>
                 </div>
@@ -538,8 +538,8 @@ HTML_DASHBOARD = """<!DOCTYPE html>
     <!-- Scripting for Client UI & APIs -->
     <script>
         // Init LocalStorage structures
-        let watchlist = JSON.parse(localStorage.getItem('ethara_watchlist') || '[]');
-        let searchHistory = JSON.parse(localStorage.getItem('ethara_history') || '[]');
+        let watchlist = JSON.parse(localStorage.getItem('stockstracker_watchlist') || '[]');
+        let searchHistory = JSON.parse(localStorage.getItem('stockstracker_history') || '[]');
         let chartInstance = null;
 
         // Set max attribute on date picker to today (UTC)
@@ -630,7 +630,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
 
         window.removeFromWatchlist = function(ticker) {
             watchlist = watchlist.filter(t => t !== ticker);
-            localStorage.setItem('ethara_watchlist', JSON.stringify(watchlist));
+            localStorage.setItem('stockstracker_watchlist', JSON.stringify(watchlist));
             renderWatchlist();
         }
 
@@ -662,7 +662,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
             if (!searchHistory.includes(ticker)) {
                 searchHistory.unshift(ticker);
                 searchHistory = searchHistory.slice(0, 10);
-                localStorage.setItem('ethara_history', JSON.stringify(searchHistory));
+                localStorage.setItem('stockstracker_history', JSON.stringify(searchHistory));
                 renderHistory();
             }
         }
@@ -728,7 +728,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
                     addBtn.onclick = () => {
                         if (!watchlist.includes(data.ticker)) {
                             watchlist.push(data.ticker);
-                            localStorage.setItem('ethara_watchlist', JSON.stringify(watchlist));
+                            localStorage.setItem('stockstracker_watchlist', JSON.stringify(watchlist));
                             addBtn.innerHTML = `<i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>`;
                             renderWatchlist();
                         }
@@ -884,7 +884,7 @@ def main():
         sys.exit(1)
         
     print(f"\n========================================================")
-    print(f" StocksChecker Stock Tracker - Single File Python Replica")
+    print(f" Stockstracker Stock Tracker - Single File Python Replica")
     print(f"========================================================")
     print(f"-> Local dashboard: http://localhost:{port}/")
     print(f"-> API Endpoints:")
