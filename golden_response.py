@@ -485,23 +485,53 @@ HTML_DASHBOARD = """<!DOCTYPE html>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                        <div class="bg-slate-800/20 light:bg-slate-200/20 p-4 rounded-2xl">
-                            <span class="text-xs text-slate-400 block mb-1">Open</span>
-                            <span class="text-base font-bold" id="histOpen">$100.00</span>
+                    <!-- Historical Snapshot Table -->
+                    <div class="w-full rounded-2xl border border-slate-800/30 overflow-hidden shadow-2xl">
+                        <div class="bg-slate-800/60 light:bg-slate-200/60 px-6 py-4 border-b border-slate-800/25">
+                            <h3 class="text-white light:text-slate-950 font-bold">Historical Snapshot</h3>
                         </div>
-                        <div class="bg-slate-800/20 light:bg-slate-200/20 p-4 rounded-2xl">
-                            <span class="text-xs text-slate-400 block mb-1">High</span>
-                            <span class="text-base font-bold text-emerald-500" id="histHigh">$110.00</span>
-                        </div>
-                        <div class="bg-slate-800/20 light:bg-slate-200/20 p-4 rounded-2xl">
-                            <span class="text-xs text-slate-400 block mb-1">Low</span>
-                            <span class="text-base font-bold text-rose-500" id="histLow">$90.00</span>
-                        </div>
-                        <div class="bg-slate-800/20 light:bg-slate-200/20 p-4 rounded-2xl">
-                            <span class="text-xs text-slate-400 block mb-1">Close (Adj)</span>
-                            <span class="text-base font-bold" id="histClose">$105.00</span>
-                        </div>
+                        <table class="w-full text-left text-sm">
+                            <thead>
+                                <tr class="bg-slate-900/40 light:bg-slate-200/40 text-slate-400 uppercase text-xs">
+                                    <th class="px-6 py-3 font-semibold">Metric</th>
+                                    <th class="px-6 py-3 text-right font-semibold">Value</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/25 dark:divide-slate-800/40 text-slate-300 light:text-slate-750">
+                                <tr>
+                                    <td class="px-6 py-3 text-slate-400">Ticker</td>
+                                    <td id="histTicker" class="px-6 py-3 text-right font-bold text-emerald-500"></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-3 text-slate-400">Date</td>
+                                    <td id="histDate" class="px-6 py-3 text-right font-mono"></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-3 text-slate-400">Open</td>
+                                    <td id="histOpen" class="px-6 py-3 text-right font-mono"></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-3 text-slate-400">High</td>
+                                    <td id="histHigh" class="px-6 py-3 text-right font-mono text-emerald-500"></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-3 text-slate-400">Low</td>
+                                    <td id="histLow" class="px-6 py-3 text-right font-mono text-rose-500"></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-3 text-slate-400">Close</td>
+                                    <td id="histClose" class="px-6 py-3 text-right font-mono font-bold"></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-3 text-slate-400">Adj. Close</td>
+                                    <td id="histAdjClose" class="px-6 py-3 text-right font-mono text-indigo-400"></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-3 text-slate-400">Volume</td>
+                                    <td id="histVolume" class="px-6 py-3 text-right font-mono"></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
                     <!-- Chart Section -->
@@ -789,10 +819,14 @@ HTML_DASHBOARD = """<!DOCTYPE html>
                     document.getElementById('histSymbol').innerText = data.ticker;
                     document.getElementById('histDateTitle').innerText = `Trading Date: ${data.date}`;
                     
+                    document.getElementById('histTicker').innerText = data.ticker;
+                    document.getElementById('histDate').innerText = data.date;
                     document.getElementById('histOpen').innerText = `$${data.open.toFixed(2)}`;
                     document.getElementById('histHigh').innerText = `$${data.high.toFixed(2)}`;
                     document.getElementById('histLow').innerText = `$${data.low.toFixed(2)}`;
                     document.getElementById('histClose').innerText = `$${data.close.toFixed(2)}`;
+                    document.getElementById('histAdjClose').innerText = `$${data.adjustedClose.toFixed(2)}`;
+                    document.getElementById('histVolume').innerText = data.volume.toLocaleString();
                     
                     histResultCard.classList.remove('hidden');
                     
