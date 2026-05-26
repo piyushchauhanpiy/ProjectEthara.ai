@@ -1,13 +1,15 @@
-Prompt
+Prompt:
 
 Context and Role
 You are a senior full-stack software architect and principal engineer. You are responsible for designing and generating a complete production-grade Stock Market History and Live Price Checker Application using a modern scalable full-stack architecture.
 
-Objective
+Objective:
+
 Develop a complete application that allows users to search live stock or commodity prices using a ticker symbol, and historical stock data using a ticker symbol and a previous date. The application must be production-ready, scalable, validated on both frontend and backend, and integrated with Yahoo Finance API.
 
-Application Overview
+Application Overview->
 The application should support:
+
 - Live stock/commodity search by ticker symbol only
 - Historical stock search by ticker symbol and date
 - “Market Closed” response when data does not exist for the selected date
@@ -15,7 +17,7 @@ The application should support:
 - Full request validation
 - Clean UI and scalable backend architecture
 
-Technology Stack
+Technology Stack->
 Frontend:
 - React
 - Vite
@@ -40,7 +42,7 @@ Backend:
 API:
 - Yahoo Finance API / unofficial Yahoo Finance endpoints
 
-Frontend Requirements
+Frontend Requirements:
 - Responsive modern UI
 - Dark/light mode
 - Search bar
@@ -55,7 +57,7 @@ Frontend Requirements
 - Search history
 - Mobile responsive dashboard
 
-Backend Requirements
+Backend Requirements:
 - REST APIs
 - Service layer
 - DTO layer
